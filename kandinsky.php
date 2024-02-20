@@ -88,7 +88,7 @@ class imageGen{
 				]
 			];
 
-			$request = self::get($url, $headers, ['model_id' => 4, 'params' => json_encode($data)]);
+			$request = self::get($url, $headers, ['model_id' => $model_id, 'params' => json_encode($data)]);
 
 			$uuid = $request['uuid'];
 			
