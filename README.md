@@ -1,14 +1,14 @@
 # Kandinsky3-PHP
-Класс для общения с Yandex GPT в PHP
+Класс для генерации изображений с помощью Kandinsky 3 в PHP
 
 Получите ключи по инструкции https://fusionbrain.ai/docs/doc/api-dokumentaciya/ и вставьте их в скрипт 
    
 Использование:
 ```
-require __DIR__ . '/yachat.php';
-use yachat\YaChat;
+require __DIR__ . '/kandinsky.php';
+use kandinsky\imageGen;
 
-$ya = yachat::getInstance();
-echo $ya::answer('Привет');
+$kd = imageGen::getInstance();
+print_r($kd::promt('Зеленый кот'));
 ```
 
