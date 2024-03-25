@@ -6,7 +6,7 @@
 Использование:
 ```
 require __DIR__ . '/kandinsky.php';
-use kandinsky\imageGen;
+use neiro\imageGen;
 
 if($kd = imageGen::getInstance()){
    print_r($kd::promt('Зеленый кот'));
