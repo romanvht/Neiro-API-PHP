@@ -1,5 +1,5 @@
 <?php
-namespace kandinsky;
+namespace neiro;
 
 class imageGen {
   protected const API_KEY = "key";
@@ -132,19 +132,17 @@ class imageGen {
     $size = ['width' => 1024, 'height' => 1024];
     $right_AR = ['16:9', '9:16', '3:2', '2:3'];
 
-    preg_match("|\[(([0-9]{1,2}):([0-9]{1,2}))\]|si", $question, $aspect_ratio);
-
-    if ($aspect_ratio[1]) {
+    if (preg_match("|\[(([0-9]{1,2}):([0-9]{1,2}))\]|si", $question, $aspect_ratio)) {
       $key_AR = array_search($aspect_ratio, $right_AR);
 
       if (in_array($aspect_ratio[1], $right_AR)) {
         if ($aspect_ratio[2] > $aspect_ratio[3]) {
           $size['height'] = floor(
-            ($height / $aspect_ratio[2]) * $aspect_ratio[3]
+            ($size['height'] / $aspect_ratio[2]) * $aspect_ratio[3]
           );
         } else {
           $size['width'] = floor(
-            ($width / $aspect_ratio[3]) * $aspect_ratio[2]
+            ($size['width'] / $aspect_ratio[3]) * $aspect_ratio[2]
           );
         }
       }
