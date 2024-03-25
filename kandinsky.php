@@ -2,8 +2,8 @@
 namespace neiro;
 
 class imageGen {
-  protected const API_KEY = "key";
-  protected const SECRET_KEY = "key";
+  protected const API_KEY = "FF7E5EE89218AD3D0BEDA8A450402651";
+  protected const SECRET_KEY = "4213BDB3CD10F00AFAFADC7E96F1C9EA";
 
   protected static $instance;
 
@@ -92,15 +92,15 @@ class imageGen {
         'X-Secret: Secret ' . self::SECRET_KEY,
       ];
       
-      $size = self::get_resolution($question);
+      $promt = self::get_promt($question);
 
       $data = [
         "type" => "GENERATE",
         "numImages" => 1,
-        "width" => $size['width'],
-        "height" => $size['height'],
+        "width" => $promt['size']['width'],
+        "height" => $promt['size']['height'],
         "generateParams" => [
-          "query" => $question,
+          "query" => $promt['question'],
         ],
       ];
 
@@ -128,11 +128,13 @@ class imageGen {
     return $result;
   }
 
-  private static function get_resolution($question) {
+  private static function get_promt($question) {
+    $promt = [];
     $size = ['width' => 1024, 'height' => 1024];
     $right_AR = ['16:9', '9:16', '3:2', '2:3'];
 
     if (preg_match("|\[(([0-9]{1,2}):([0-9]{1,2}))\]|si", $question, $aspect_ratio)) {
+      $question = str_replace($aspect_ratio[0], '', $question);
       $key_AR = array_search($aspect_ratio, $right_AR);
 
       if (in_array($aspect_ratio[1], $right_AR)) {
@@ -147,6 +149,10 @@ class imageGen {
         }
       }
     }
-    return $size;
+    
+    $promt['question'] = $question;
+    $promt['size'] = $size;
+    
+    return $promt;
   }
 }
