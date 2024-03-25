@@ -2,8 +2,8 @@
 namespace kandinsky;
 
 class imageGen {
-  protected const API_KEY = "FF7E5EE89218AD3D0BEDA8A450402651";
-  protected const SECRET_KEY = "4213BDB3CD10F00AFAFADC7E96F1C9EA";
+  protected const API_KEY = "key";
+  protected const SECRET_KEY = "key";
 
   protected static $instance;
 
