@@ -10,12 +10,12 @@ require __DIR__ . '/gigachat.php';
 use neiro\Gigachat;
 
 if($giga = gigachat::getInstance()){
-  echo $giga::answer('Привет');
+  echo $giga::question('Привет');
 }
 ```
 
 Для запроса картинок используется функция ```get_image()```, в ней следует изменить директорию сохранения изображений.
-В функции ```answer()``` можно изменить формат вывода изображений в ответе
+В функции ```question()``` можно изменить формат вывода изображений в ответе
 
 # Yandex-GPT-PHP
 Класс для общения с Yandex GPT в PHP
@@ -29,7 +29,7 @@ require __DIR__ . '/yachat.php';
 use neiro\YaChat;
 
 if($ya = yachat::getInstance()){
-   echo $ya::answer('Привет');
+   echo $ya::question('Привет');
 }
 ```
 
@@ -44,7 +44,7 @@ require __DIR__ . '/kandinsky.php';
 use neiro\imageGen;
 
 if($kd = imageGen::getInstance()){
-   print_r($kd::promt('Зеленый кот'));
+   echo $kd::question('Зеленый кот');
 }
 ```
 Для выбора соотношения сторон нужно добавить к промту `[х:у]`.
