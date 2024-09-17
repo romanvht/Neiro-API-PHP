@@ -14,7 +14,7 @@ class YaChat {
             self::$instance = new self();
             self::loadTokenData();
         }
-        
+
         return self::$instance;
     }
 
@@ -83,7 +83,7 @@ class YaChat {
         file_put_contents('token_ya_ext.txt', '');
     }
 
-    public static function answer($question, $temperature = 0.6) {
+    public static function question($question, $temperature = 0.6) {
         if (empty($question)) {
             return "";
         }
